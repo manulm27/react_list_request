@@ -5,7 +5,7 @@ const Input = ()=>{
 
     const [data, setData] = useState("");
     const [item, setItem] = useState([]);
-    const [styles, setStyles] = useState(false);
+    const [view, setView] = useState(null);
     const [item_id, setItem_id] = useState(false)
 
     const id_random = ()=>{
@@ -18,7 +18,7 @@ const Input = ()=>{
         return ids.join('');
     };
 
-    const intro = (e)=>{
+    const enter = (e)=>{
         setData(e.target.value);
         console.log(e.code);
         if(e.code === "Enter"){
@@ -31,24 +31,24 @@ const Input = ()=>{
         };
     };
 
-    const select = (e)=>{
+    const select = (e, index)=>{
         setItem_id(e.target.id)
-        styles === false ? setStyles(true) : setStyles(false);
+        setView(index);
     };
 
     const remove = ()=>{
         let arr = item.filter(elem => elem.id != item_id)
         setItem(arr)
-        console.log(arr)
     };
 
     return (
         <>
-        <input type="text" onKeyUp={intro} />
-        {item.map((item, key)=>{
-            return <li className="itemsLi" id={item.id} key={key} onClick={(e)=>{select(e)}}>{item.label}</li>
+        <ul>
+        <input type="text" onKeyUp={enter} />
+        {item.map((item, index)=>{
+            return <li className="items-li" id={item.id} key={index} onMouseEnter={(e)=>select(e, index)} onMouseLeave={()=>setView(null)}>{item.label}<button className={view === index?'d-block':'d-none'} onClick={remove}>Eliminar</button></li>
         })}
-        <button className={styles===true?'d-block':'d-none'} onClick={remove}>Eliminar</button>
+        </ul>
         </>
     );
 };
