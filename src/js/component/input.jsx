@@ -39,6 +39,7 @@ const Input = ()=>{
     const remove = ()=>{
         let arr = item.filter(elem => elem.id != item_id)
         setItem(arr)
+        console.log(arr)
     };
 
     return (
