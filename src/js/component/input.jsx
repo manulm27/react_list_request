@@ -1,53 +1,47 @@
 import React from "react";
 import { useState } from "react";
 
-const Input = ()=>{
+const Input = () => {
 
     const [data, setData] = useState("");
     const [item, setItem] = useState([]);
-    const [styles, setStyles] = useState(false);
-    const [item_id, setItem_id] = useState(false)
 
-    const id_random = ()=>{
+    const id_random = () => {
         const ids = [];
         const characters = 'abcdefghi0123456789';
-        for(let i = 0; i < characters.length; i++){
+        for (let i = 0; i < characters.length; i++) {
             const random = Math.floor(Math.random() * characters.length);
             ids.push(characters[random]);
         };
         return ids.join('');
     };
 
-    const intro = (e)=>{
+    const enter = (e) => {
         setData(e.target.value);
-        console.log(e.code);
-        if(e.code === "Enter"){
-            if(data.length === 0){
+        if (e.code === "Enter") {
+            if (data.length === 0) {
                 alert("Datos no validos.");
-            }else{
-                setItem((elem)=>{return elem.concat({label: data, id: id_random()})});
+            } else {
+                setItem((elem) => { return elem.concat({ label: data, id: id_random() }) });
                 e.target.value = ""
             };
         };
     };
 
-    const select = (e)=>{
-        setItem_id(e.target.id)
-        styles === false ? setStyles(true) : setStyles(false);
-    };
-
-    const remove = ()=>{
-        let arr = item.filter(elem => elem.id != item_id)
+    const remove = (itemm) => {
+        let arr = item.filter(elem => elem.id != itemm.id)
         setItem(arr)
     };
 
     return (
         <>
-        <input type="text" onKeyUp={intro} />
-        {item.map((item, key)=>{
-            return <li className="itemsLi" id={item.id} key={key} onClick={(e)=>{select(e)}}>{item.label}</li>
-        })}
-        <button className={styles===true?'d-block':'d-none'} onClick={remove}>Eliminar</button>
+            <input type="text" onKeyUp={enter} placeholder="Escribe aqui" />
+            <ul>
+                {item.map((item, index) => {
+                    return <li className="items-li" id={item.id} key={index}>{item.label}<span><i className="fa fa-trash" onClick={() => remove(item)}></i></span></li>
+                })}
+            </ul>
+            <p>{item.length === 0 ? "No hay ningun elemento." : item.length}</p>
         </>
     );
 };

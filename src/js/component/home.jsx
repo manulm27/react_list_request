@@ -1,15 +1,12 @@
 import React from "react";
 import Input from "./input.jsx"
 
-//create your first component
 const Home = () => {
 
 	return (
-		<div className="text-center">
-
-			<ul>
-			 <Input />
-			</ul>
+		<div className="container text-center">
+			<h1 className="todo-header">TodoList</h1>
+			<Input />
 		</div>
 	);
 };
