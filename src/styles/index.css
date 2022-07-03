@@ -1,9 +1,17 @@
 .container{
-    background-color: rgb(95, 161, 55);
+    background-color: rgb(240, 240, 240);
     margin-top: 1rem;
-    width: 400px;
-    border: 1px solid rgb(96, 96, 96);
+    width: 500px;
+    border: 1px solid rgb(174, 174, 174);
     border-radius: 3px;
+}
+
+.container h1{
+    font-family: sans-serif;
+    color:rgb(236, 211, 87);
+    font-weight: bolder;
+    font-size: 3rem;
+    text-shadow: 2px 2px 7px rgb(53, 97, 180);
 }
 
 ul{
@@ -11,15 +19,17 @@ ul{
 }
 
 .items-li{
+    font-size: 18px;
     margin: 1rem !important;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(236, 236, 236);
+    background-color: rgb(94, 153, 255);
     padding-left: 10px;
     line-height: 2em;
-    color: rgb(12, 12, 12);
-    box-shadow: 1px 1px rgb(107, 107, 107);
+    color: rgb(255, 255, 255);
+    box-shadow: 1px 1px rgb(130, 130, 130);
     border-radius: 3px;
+    font-family: cursive;
 }
 
 span{
@@ -29,6 +39,6 @@ span{
 }
 
 .items-li:hover span{
-    color: rgb(189, 58, 58);
+    color: rgb(33, 33, 33);
     display: block;
 }
