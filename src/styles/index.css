@@ -1,5 +1,5 @@
 .container{
-    background-color: rgb(78, 161, 212);
+    background-color: rgb(95, 161, 55);
     margin-top: 1rem;
     width: 400px;
     border: 1px solid rgb(96, 96, 96);
@@ -14,11 +14,11 @@ ul{
     margin: 1rem !important;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(236, 236, 236);
     padding-left: 10px;
     line-height: 2em;
     color: rgb(12, 12, 12);
-    box-shadow: 1px 1px rgb(139, 139, 139);
+    box-shadow: 1px 1px rgb(107, 107, 107);
     border-radius: 3px;
 }
 
@@ -29,5 +29,6 @@ span{
 }
 
 .items-li:hover span{
+    color: rgb(189, 58, 58);
     display: block;
 }

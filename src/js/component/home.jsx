@@ -1,12 +1,12 @@
 import React from "react";
-import Input from "./input.jsx"
+import List from "./list.jsx"
 
 const Home = () => {
 
 	return (
 		<div className="container text-center">
-			<h1 className="todo-header">TodoList</h1>
-			<Input />
+			<h1 className="todo-header m-2">Pokemon List</h1>
+			<List />
 		</div>
 	);
 };
