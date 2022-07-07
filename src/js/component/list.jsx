@@ -1,19 +1,24 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { request } from "../script/request";
 import { id_random } from "../script/id_generator";
+import { getter } from "../script/petitions";
+import { update } from "../script/petitions"
 
 const List = () => {
 
     const [data, setData] = useState("");
-    const [item, setItem] = useState([]);
+    const [task, setTask] = useState([])
 
-    useEffect(()=>{
-        request()
-            .then(name => name.json())
-            .then(data => setItem(item.concat(data.results)))
+    useEffect(() => {
+        getter()
+            .then(label => label.json())
+            .then(data => setTask(data))
             .catch(err => console.log(err))
     }, [])
+
+    useEffect(() => {
+        update(task)
+    }, [task])
 
     const enter = (e) => {
         setData(e.target.value);
@@ -21,29 +26,31 @@ const List = () => {
             if (data.length === 0) {
                 alert("Datos no validos.");
             } else {
-                setItem((elem) => { return elem.concat({ name: data, id: id_random() }) });
+                setTask((elem) => { return elem.concat({ label: data, done: false, id: id_random() }) });
                 e.target.value = ""
             };
         };
     };
 
-    const remove = (itemm) => {
-        let arr = item.filter(elem => elem.id != itemm.id)
-        setItem(arr)
+    const remove = (element) => {
+        let arr = task.filter(elem => elem.id != element.id)
+        setTask(arr)
     };
 
     return (
         <>
-            <input className="m-2" type="text" onKeyUp={enter} placeholder="Añadir Pokemon" />
+            <input className="m-2" type="text" onKeyUp={enter
+            } placeholder="Add chores" />
             <ul>
-                {item.map((item, index) => {
-                    if(!item.id){
-                        item["id"] = id_random()
+                {task.map((elem, index) => {
+                    if (!elem.id) {
+                        elem["id"] = id_random()
                     }
-                    return <li className="items-li" id={item.id} key={index}>{item.name}<span><i className="fa fa-trash" onClick={() => remove(item)}></i></span></li>
+                    return <li className="items-li" id={elem.id} key={index}>{elem.label}<span><i className="fa fa-trash" onClick={() => remove(elem)}></i></span></li>
                 })}
             </ul>
-            <p>{item.length === 0 ? "No hay ningun elemento." : item.length}</p>
+            <p>{task.length === 0 ? "You have no pending tasks." : task.length+" pending tasks"}</p>
+            <br/>
         </>
     );
 };

@@ -5,7 +5,7 @@ const Home = () => {
 
 	return (
 		<div className="container text-center">
-			<h1 className="todo-header m-2">Pokémon list</h1>
+			<h1 className="todo-header m-2">To do List</h1>
 			<List />
 		</div>
 	);

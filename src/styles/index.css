@@ -1,17 +1,16 @@
 .container{
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(82, 174, 255);
     margin-top: 1rem;
     width: 500px;
-    border: 1px solid rgb(174, 174, 174);
     border-radius: 3px;
+    box-shadow: 1px  1px rgba(27, 27, 27, 0.291);
 }
 
 .container h1{
-    font-family: sans-serif;
-    color:rgb(236, 211, 87);
+    font-family: cursive;
+    color:rgb(38, 38, 38);
     font-weight: bolder;
     font-size: 3rem;
-    text-shadow: 2px 2px 7px rgb(53, 97, 180);
 }
 
 ul{
@@ -23,13 +22,11 @@ ul{
     margin: 1rem !important;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(94, 153, 255);
+    background-color: rgb(245, 245, 245);
     padding-left: 10px;
     line-height: 2em;
-    color: rgb(255, 255, 255);
+    color: rgb(13, 13, 13);
     box-shadow: 1px 1px rgb(130, 130, 130);
-    border-radius: 3px;
-    font-family: cursive;
 }
 
 span{
@@ -41,4 +38,13 @@ span{
 .items-li:hover span{
     color: rgb(33, 33, 33);
     display: block;
+    color: orangered;
+}
+
+.items-li:hover{
+    font-size: 20px;
+}
+
+p{
+    font-family: cursive;
 }
